@@ -5,6 +5,7 @@ import com.betechme.www.daggerpractice.di.auth.AuthModule;
 import com.betechme.www.daggerpractice.di.auth.AuthViewModelsModule;
 import com.betechme.www.daggerpractice.network.auth.AuthApi;
 import com.betechme.www.daggerpractice.ui.auth.AuthActivity;
+import com.betechme.www.daggerpractice.ui.main.MainActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -16,6 +17,9 @@ public abstract class ActivityBuildersModule {
             modules = {AuthViewModelsModule.class, AuthModule.class,}
     )
     abstract AuthActivity contributeAuthActivity();
+
+    @ContributesAndroidInjector
+    abstract MainActivity contributeMainActivity();
 
 
 }

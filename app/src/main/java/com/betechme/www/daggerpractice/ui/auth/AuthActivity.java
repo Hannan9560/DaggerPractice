@@ -2,6 +2,7 @@ package com.betechme.www.daggerpractice.ui.auth;
 
 
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,6 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.betechme.www.daggerpractice.R;
 import com.betechme.www.daggerpractice.models.User;
+import com.betechme.www.daggerpractice.ui.main.MainActivity;
 import com.betechme.www.daggerpractice.viewModels.ViewModelProviderFactory;
 import com.bumptech.glide.RequestManager;
 
@@ -63,7 +65,7 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
 
     private void subscriberObservers(){
 
-        viewModel.observeUser().observe(this, new Observer<AuthResource<User>>() {
+        viewModel.observeAuthState().observe(this, new Observer<AuthResource<User>>() {
             @Override
             public void onChanged(AuthResource<User> userAuthResource) {
                 if(userAuthResource != null){
@@ -76,6 +78,7 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
                         case AUTHENTICATED:{
                             showProgressbar(false);
                             Log.d(TAG, "onChanged LOGIN SUCCESS: " + userAuthResource.data.getEmail());
+                            onLoginSuccess();
                             break;
                         }
 
@@ -93,6 +96,12 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
                 }
             }
         });
+    }
+
+    private void onLoginSuccess(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void showProgressbar(boolean isVisible){
