@@ -4,12 +4,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.betechme.www.daggerpractice.BaseActivity;
 import com.betechme.www.daggerpractice.R;
+import com.betechme.www.daggerpractice.ui.main.posts.PostsFragment;
+import com.betechme.www.daggerpractice.ui.main.profile.ProfileFragment;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
@@ -19,7 +20,13 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toast.makeText(this, "Main Activity", Toast.LENGTH_SHORT).show();
+        testFragment();
+    }
+
+    private void testFragment(){
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_container, new PostsFragment())
+                .commit();
     }
 
     @Override
