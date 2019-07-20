@@ -25,9 +25,9 @@ import javax.inject.Inject;
 
 import dagger.android.support.DaggerFragment;
 
-public class PostsFragment extends DaggerFragment {
+public class PostFragment extends DaggerFragment {
 
-    private static final String TAG = "PostsFragment";
+    private static final String TAG = "PostFragment";
     private PostsViewModel viewModel;
     private RecyclerView recyclerView;
 

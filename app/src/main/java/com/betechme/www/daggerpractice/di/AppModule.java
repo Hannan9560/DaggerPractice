@@ -7,11 +7,13 @@ import android.graphics.drawable.Drawable;
 import androidx.core.content.ContextCompat;
 
 import com.betechme.www.daggerpractice.R;
+import com.betechme.www.daggerpractice.models.User;
 import com.betechme.www.daggerpractice.ui.util.Constants;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -53,4 +55,13 @@ public class AppModule {
     static Drawable provideApplication(Application application){
         return ContextCompat.getDrawable(application, R.drawable.logo);
     }
+
+    @Singleton
+    @Provides
+    @Named("app_user")
+    static User someSuer(){
+        return new User();
+    }
+
+
 }
